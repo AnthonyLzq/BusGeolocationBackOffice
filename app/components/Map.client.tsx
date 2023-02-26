@@ -38,7 +38,7 @@ const Map: FC<Props> = props => {
     })
 
     return () => {
-      socket.disconnect()
+      if (socket.connected) socket.disconnect()
     }
   }, [])
 
