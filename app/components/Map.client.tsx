@@ -18,7 +18,7 @@ const BusIcon = new Icon({
   iconUrl: Bus,
   iconSize: [24, 24]
 })
-const initialPosition: LatLngTuple = [-12.023571382984304, -77.04835719426138]
+const initialPosition: LatLngTuple = [-12.025560850179993, -77.05343209496314]
 
 const Map: FC<Props> = props => {
   const [polyline, setPolyline] = useState<LatLngTuple[]>([])
@@ -29,7 +29,8 @@ const Map: FC<Props> = props => {
       reconnectionDelayMax: 10000,
       query: {
         id: '1'
-      }
+      },
+      transports: ['websocket']
     })
 
     socket.on('bus/position', (message: Point) => {
@@ -58,7 +59,7 @@ const Map: FC<Props> = props => {
           borderRadius: '16px'
         }}
         center={initialPosition}
-        zoom={15}
+        zoom={16}
         scrollWheelZoom={false}
       >
         <TileLayer
