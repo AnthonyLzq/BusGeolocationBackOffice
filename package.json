@@ -5,7 +5,8 @@
     "build": "remix build",
     "dev": "remix dev",
     "typecheck": "tsc",
-    "lint": "eslint --fix app --ext .ts,.js,.tsx"
+    "lint": "eslint --fix app --ext .ts,.js,.tsx",
+    "start": "node server.js"
   },
   "dependencies": {
     "@remix-run/node": "^1.13.0",
@@ -35,5 +36,24 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "name": "bus-geolocation-back-office",
+  "description": "Back office to locate buses in real time",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyLzq/BusGeolocationBackOffice.git"
+  },
+  "keywords": [
+    "bus",
+    "geolocation",
+    "real",
+    "time"
+  ],
+  "author": "AnthonyLzq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnthonyLzq/BusGeolocationBackOffice/issues"
+  },
+  "homepage": "https://github.com/AnthonyLzq/BusGeolocationBackOffice#readme"
 }
