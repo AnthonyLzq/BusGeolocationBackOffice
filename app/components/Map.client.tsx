@@ -30,7 +30,7 @@ const Map: FC<Props> = props => {
       query: {
         id: '1'
       },
-      transports: ['websocket']
+      transports: ['websocket', 'polling', 'flashsocket']
     })
 
     socket.on('bus/position', (message: Point) => {
