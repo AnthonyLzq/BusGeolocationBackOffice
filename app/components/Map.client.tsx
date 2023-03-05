@@ -45,7 +45,6 @@ const Map: FC<Props> = props => {
   const [buses, setBuses] = useState<string[]>([])
   const [polylines, setPolylines] = useState<LatLngTuple[][]>([[]])
   const [colors, setColors] = useState<string[]>([])
-  console.log('🚀 ~ file: Map.client.tsx:51 ~ colors:', colors)
   const { height, width } = props
 
   useEffect(() => {
