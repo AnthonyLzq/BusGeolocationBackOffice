@@ -49,8 +49,7 @@ const Map: FC<Props> = props => {
 
   useEffect(() => {
     const socket = io(ENV.WS_URL, {
-      reconnectionDelayMax: 10000,
-      transports: ['websocket', 'polling', 'flashsocket']
+      reconnectionDelayMax: 10000
     })
 
     socket.on('initialData', (message: AllClientsData) => {
