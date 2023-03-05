@@ -33,7 +33,7 @@ export const meta: MetaFunction = () => ({
   'twitter:creator': '@AnthonyLzq',
   'twitter:url': 'https://bus-geolocation-back-office.vercel.app',
   'twitter:title': 'Bus Geolocation',
-  'twitter:description': 'Bus Geolocation of buses in Lima, Peru.'
+  'twitter:description': 'Geolocation of buses in Lima, Peru.'
   // 'twitter:image': 'https://acecom.dev/images/Marck5.png'
 })
 
