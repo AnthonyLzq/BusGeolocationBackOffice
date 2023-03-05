@@ -19,8 +19,22 @@ import { getENV } from './env.server'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
-  viewport: 'width=device-width,initial-scale=1'
+  title: 'Bus Geolocation',
+  viewport: 'width=device-width,initial-scale=1',
+  keywords: 'Bus,Geolocation,Lima,Peru,IoT,ATU',
+  description: 'Geolocation of buses in Lima, Peru',
+  'og:type': 'website',
+  'og:url': 'https://bus-geolocation-back-office.vercel.app',
+  'og:title': 'Bus Geolocation',
+  'og:description': 'Geolocation of buses in Lima, Peru',
+  // 'og:image': 'https://acecom.dev/images/Marck5.png',
+  'og:locale': 'es_ES',
+  'twitter:card': 'summary_large_image',
+  'twitter:creator': '@AnthonyLzq',
+  'twitter:url': 'https://bus-geolocation-back-office.vercel.app',
+  'twitter:title': 'Bus Geolocation',
+  'twitter:description': 'Bus Geolocation of buses in Lima, Peru.'
+  // 'twitter:image': 'https://acecom.dev/images/Marck5.png'
 })
 
 type LoaderData = {
