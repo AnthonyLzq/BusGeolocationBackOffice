@@ -38,7 +38,7 @@ const Map: FC<Props> = props => {
           borderRadius: '16px'
         }}
         center={initialPosition}
-        zoom={12}
+        zoom={13}
         scrollWheelZoom={false}
       >
         <TileLayer
