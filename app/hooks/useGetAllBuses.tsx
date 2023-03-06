@@ -49,11 +49,15 @@ const useGetAllBuses = () => {
       newBuses.forEach((bus, index) => {
         socket.on(`${bus}/position`, (message: Point) => {
           setPolylines(prevState => {
-            const newState = prevState.map(polyline => [...new Set(polyline)])
+            const newState = structuredClone(prevState)
 
             if (!newState[index]) newState[index] = []
 
-            newState[index].push(message)
+            if (
+              newState[index][newState[index].length - 1]?.toString() !==
+              message.toString()
+            )
+              newState[index].push(message)
 
             return newState
           })
