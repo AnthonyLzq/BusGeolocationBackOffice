@@ -14,6 +14,7 @@ import {
   useLoaderData
 } from '@remix-run/react'
 
+import BusGeolocation from './static/images/BusGeolocation.png'
 import type { ENV } from './env.server'
 import { getENV } from './env.server'
 
@@ -27,14 +28,14 @@ export const meta: MetaFunction = () => ({
   'og:url': 'https://bus-geolocation-back-office.vercel.app',
   'og:title': 'Bus Geolocation',
   'og:description': 'Geolocation of buses in Lima, Peru',
-  // 'og:image': 'https://acecom.dev/images/Marck5.png',
+  'og:image': BusGeolocation,
   'og:locale': 'es_ES',
   'twitter:card': 'summary_large_image',
   'twitter:creator': '@AnthonyLzq',
   'twitter:url': 'https://bus-geolocation-back-office.vercel.app',
   'twitter:title': 'Bus Geolocation',
-  'twitter:description': 'Geolocation of buses in Lima, Peru.'
-  // 'twitter:image': 'https://acecom.dev/images/Marck5.png'
+  'twitter:description': 'Geolocation of buses in Lima, Peru.',
+  'twitter:image': BusGeolocation
 })
 
 type LoaderData = {
