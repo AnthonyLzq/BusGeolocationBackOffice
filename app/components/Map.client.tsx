@@ -16,7 +16,7 @@ const BusIcon = new Icon({
   iconUrl: Bus,
   iconSize: [24, 24]
 })
-const initialPosition: LatLngTuple = [-12.084489222242723, -76.97945124985259]
+const initialPosition: LatLngTuple = [-12.045976886162665, -77.03053731998092]
 const COLORS_TRANSLATION: Record<string, string> = {
   azul: '#0B5ED7',
   amarillo: '#F2C94C',
@@ -45,7 +45,7 @@ const Map: FC<Props> = props => {
           borderRadius: '16px'
         }}
         center={initialPosition}
-        zoom={13}
+        zoom={12}
         scrollWheelZoom={false}
       >
         <TileLayer
