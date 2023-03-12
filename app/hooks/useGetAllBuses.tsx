@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 import type { LatLngTuple } from 'leaflet'
 
-import { randomHexColor } from '~/utils'
-
 type Point = [lat: number, lng: number]
 
 type AllClientsData = {
@@ -21,10 +19,15 @@ type AllClientsData = {
   }
 }
 
+type BusLine = {
+  id: string
+  line: string
+}
+
 const useGetAllBuses = () => {
-  const [buses, setBuses] = useState<string[]>([])
+  const [buses, setBuses] = useState<BusLine[]>([])
   const [polylines, setPolylines] = useState<LatLngTuple[][]>([[]])
-  const [colors, setColors] = useState<string[]>([])
+  // const [colors, setColors] = useState<string[]>([])
 
   useEffect(() => {
     const socket = io(ENV.WS_URL, {
@@ -33,21 +36,25 @@ const useGetAllBuses = () => {
     })
 
     socket.on('initialData', (message: AllClientsData) => {
-      const newBuses: string[] = []
+      const newBuses: BusLine[] = []
 
       for (const client in message)
         for (const line in message[client])
-          for (const bus in message[client][line]) newBuses.push(bus)
+          for (const bus in message[client][line])
+            newBuses.push({
+              id: bus,
+              line
+            })
 
       setBuses(newBuses)
 
-      const newColors = Array.from({ length: newBuses.length }, () =>
-        randomHexColor()
-      )
+      // const newColors = Array.from({ length: newBuses.length }, () =>
+      //   randomHexColor()
+      // )
 
-      setColors(newColors)
+      // setColors(newColors)
       newBuses.forEach((bus, index) => {
-        socket.on(`${bus}/position`, (message: Point) => {
+        socket.on(`${bus.id}/position`, (message: Point) => {
           setPolylines(prevState => {
             const newState = structuredClone(prevState)
 
@@ -70,7 +77,7 @@ const useGetAllBuses = () => {
     }
   }, [])
 
-  return { buses, polylines, colors }
+  return { buses, polylines /*, colors*/ }
 }
 
 export { useGetAllBuses }

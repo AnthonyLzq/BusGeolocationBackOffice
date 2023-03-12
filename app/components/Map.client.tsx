@@ -4,7 +4,8 @@ import type { LatLngTuple } from 'leaflet'
 import { Icon } from 'leaflet'
 
 import { useGetAllBuses } from '~/hooks'
-import Bus from '../static/images/bus.png'
+import { toTitleCase } from '~/utils'
+import Bus from '~/static/images/bus.png'
 
 type Props = {
   height: string
@@ -16,10 +17,16 @@ const BusIcon = new Icon({
   iconSize: [24, 24]
 })
 const initialPosition: LatLngTuple = [-12.084489222242723, -76.97945124985259]
+const COLORS_TRANSLATION: Record<string, string> = {
+  azul: '#0B5ED7',
+  amarillo: '#F2C94C',
+  rojo: '#EB5757',
+  morado: '#9B51E0'
+}
 
 const Map: FC<Props> = props => {
   const { height, width } = props
-  const { buses, colors, polylines } = useGetAllBuses()
+  const { buses, polylines } = useGetAllBuses()
 
   return (
     <div
@@ -47,18 +54,29 @@ const Map: FC<Props> = props => {
         />
         {polylines[0].length > 0 ? (
           <>
-            {polylines.map((polyline, index) => (
-              <Marker
-                key={buses[index]}
-                position={polyline[polyline.length - 1]}
-                icon={BusIcon}
-              >
-                <Popup>Bus: {buses[index]}</Popup>
-                <Polyline positions={polylines[index]} color={colors[index]}>
-                  <Popup>Bus: {buses[index]}</Popup>
-                </Polyline>
-              </Marker>
-            ))}
+            {polylines.map((polyline, index) => {
+              const { id, line } = buses[index]
+
+              return (
+                <Marker
+                  key={id}
+                  position={polyline[polyline.length - 1]}
+                  icon={BusIcon}
+                >
+                  <Popup>
+                    Corredor: {toTitleCase(line)} - {id}
+                  </Popup>
+                  <Polyline
+                    positions={polylines[index]}
+                    color={COLORS_TRANSLATION[line] || 'black'}
+                  >
+                    <Popup>
+                      Corredor: {toTitleCase(line)} - {id}
+                    </Popup>
+                  </Polyline>
+                </Marker>
+              )
+            })}
           </>
         ) : null}
       </MapContainer>
